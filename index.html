@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>MABU AGROFARM — Minimal & Elegant</title>
+
+  <!-- Tailwind CDN (for quick prototyping) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="antialiased text-gray-800 bg-gray-50 font-poppins">
+
+  <!-- Header -->
+  <header class="sticky top-0 z-50 backdrop-blur bg-white/70 border-b">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        <a href="#home" class="flex items-baseline gap-3" id="site-logo">
+          <h1 class="text-2xl font-serif text-gray-900 tracking-wide">MABU <span class="text-amber-400">AGROFARM</span></h1>
+          <span class="sr-only">Home</span>
+        </a>
+
+        <!-- Desktop Nav -->
+        <nav class="hidden md:flex space-x-6" aria-label="Primary">
+          <a class="nav-link px-3 py-2 rounded-md text-sm font-semibold text-gray-700 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-amber-300" href="#home">Home</a>
+          <a class="nav-link px-3 py-2 rounded-md text-sm font-semibold text-gray-700 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-amber-300" href="#about">About</a>
+          <a class="nav-link px-3 py-2 rounded-md text-sm font-semibold text-gray-700 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-amber-300" href="#services">Services</a>
+          <a class="nav-link px-3 py-2 rounded-md text-sm font-semibold text-gray-700 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-amber-300" href="#contact">Contact</a>
+        </nav>
+
+        <!-- Mobile menu button -->
+        <div class="md:hidden">
+          <button id="mobile-menu-btn" aria-controls="mobile-menu" aria-expanded="false" class="p-2 rounded-md focus:ring-2 focus:ring-amber-300">
+            <svg id="mobile-menu-icon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+            <span class="sr-only">Open menu</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="md:hidden hidden border-t bg-white/90">
+      <div class="px-2 pt-2 pb-4 space-y-1">
+        <a href="#home" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700">Home</a>
+        <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700">About</a>
+        <a href="#services" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700">Services</a>
+        <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main id="main" class="min-h-[70vh]">
+    <!-- Home -->
+    <section id="home" class="page-section relative overflow-hidden">
+      <div class="hero min-h-[60vh] flex items-center">
+        <div class="absolute inset-0 bg-[url('https://placehold.co/1600x900/FFFFFF/5B331A?text=Replace+Hero+Image')] bg-cover bg-center filter grayscale-10"></div>
+        <div class="relative z-10 max-w-4xl mx-auto px-4 py-28 text-center">
+          <p class="text-amber-400 font-semibold">Ethical. Sustainable. Reliable.</p>
+          <h2 class="font-serif text-4xl md:text-6xl text-gray-900 leading-tight my-4">MABU AGROFARM: The Future of Quality Livestock</h2>
+          <p class="text-lg text-gray-700 mb-8">Superior cattle, sheep, and goats — raised ethically and sustainably for breeding and commercial needs.</p>
+          <a href="#services" class="inline-block bg-amber-400 text-white font-semibold py-3 px-6 rounded-full shadow hover:opacity-95 focus:outline-none focus:ring-2 focus:ring-amber-300 transition">Explore Services</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="page-section hidden" aria-labelledby="about-heading">
+      <div class="max-w-7xl mx-auto px-4 py-16">
+        <h3 id="about-heading" class="text-3xl font-serif text-gray-900 mb-4">Who We Are</h3>
+        <div class="grid md:grid-cols-2 gap-10 items-center">
+          <img src="https://placehold.co/800x500/AF7733/FFFFFF?text=Farm+Image" alt="View of the farm" class="w-full rounded-lg shadow-md">
+          <div>
+            <p class="text-gray-700 mb-4">Family-run, ethical livestock farming focused on animal welfare, biodiversity, and community support.</p>
+            <ul class="space-y-2 text-gray-700">
+              <li class="flex items-start gap-3"><span class="text-amber-400" aria-hidden="true">✔</span> Ethical Animal Welfare</li>
+              <li class="flex items-start gap-3"><span class="text-amber-400" aria-hidden="true">✔</span> Sustainable Land Management</li>
+              <li class="flex items-start gap-3"><span class="text-amber-400" aria-hidden="true">✔</span> Dedication & Expertise</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="page-section hidden" aria-labelledby="services-heading">
+      <div class="max-w-7xl mx-auto px-4 py-16">
+        <h3 id="services-heading" class="text-3xl font-serif text-gray-900 mb-6">Quality Livestock & Services</h3>
+        <div class="grid md:grid-cols-3 gap-6">
+          <div class="p-6 bg-white rounded-lg shadow-sm">
+            <h4 class="font-semibold text-gray-900 mb-2">Breeding Stock</h4>
+            <p class="text-gray-600">High-quality bulls, heifers, rams and ewes selected for genetics and health.</p>
+          </div>
+          <div class="p-6 bg-white rounded-lg shadow-sm">
+            <h4 class="font-semibold text-gray-900 mb-2">Commercial & Events</h4>
+            <p class="text-gray-600">Respectful supply for cultural and commercial events with reliable delivery.</p>
+          </div>
+          <div class="p-6 bg-white rounded-lg shadow-sm">
+            <h4 class="font-semibold text-gray-900 mb-2">Consultation</h4>
+            <p class="text-gray-600">Breeding advice, farm management and sustainable grazing plans.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="page-section hidden" aria-labelledby="contact-heading">
+      <div class="max-w-7xl mx-auto px-4 py-16">
+        <h3 id="contact-heading" class="text-3xl font-serif text-gray-900 mb-6">Get in Touch</h3>
+        <div class="grid md:grid-cols-2 gap-8">
+          <div>
+            <p class="font-semibold text-gray-900">Address</p>
+            <p class="text-gray-700 mb-4">190 Protea Lane, Kyalami Boulevard, Midrand, Gauteng, 1685</p>
+            <p class="font-semibold text-gray-900">Phone</p>
+            <p class="text-gray-700 mb-4"><a href="tel:+27694317314" class="text-amber-400 hover:underline">069-431-7314</a></p>
+            <p class="font-semibold text-gray-900">Email</p>
+            <p><a href="mailto:info@mabuagrofarm.com" class="text-amber-400 hover:underline">info@mabuagrofarm.com</a></p>
+          </div>
+          <form id="contact-form" class="bg-white p-6 rounded-lg shadow-sm" onsubmit="event.preventDefault(); window.appModal.showMessage('Thank you — we will reply shortly.', 'success'); this.reset();">
+            <label class="block mb-3">
+              <span class="text-sm font-medium text-gray-700">Name</span>
+              <input required name="name" class="mt-1 block w-full border-gray-200 rounded-md shadow-sm focus:ring-amber-300 focus:border-amber-300" />
+            </label>
+            <label class="block mb-3">
+              <span class="text-sm font-medium text-gray-700">Email</span>
+              <input required type="email" name="email" class="mt-1 block w-full border-gray-200 rounded-md shadow-sm focus:ring-amber-300 focus:border-amber-300" />
+            </label>
+            <label class="block mb-4">
+              <span class="text-sm font-medium text-gray-700">Message</span>
+              <textarea required name="message" rows="4" class="mt-1 block w-full border-gray-200 rounded-md shadow-sm focus:ring-amber-300 focus:border-amber-300"></textarea>
+            </label>
+            <button type="submit" class="w-full bg-amber-400 text-white py-2 rounded-md font-semibold">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-white border-t mt-8">
+    <div class="max-w-7xl mx-auto px-4 py-8 text-sm text-gray-600">
+      &copy; <span id="current-year"></span> MABU AGROFARM — All rights reserved.
+    </div>
+  </footer>
+
+  <!-- Accessible Modal (hidden initially) -->
+  <div id="app-modal" class="fixed inset-0 z-50 hidden items-center justify-center" aria-hidden="true">
+    <div class="fixed inset-0 bg-black/50" tabindex="-1" data-modal-backdrop></div>
+    <div class="bg-white rounded-lg shadow-lg max-w-md w-full mx-4 z-10 p-6" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <div class="flex items-start gap-4">
+        <div id="modal-icon" class="flex-none"></div>
+        <div class="flex-1">
+          <h4 id="modal-title" class="text-lg font-semibold text-gray-900">Message</h4>
+          <p id="modal-text" class="mt-2 text-gray-700"></p>
+        </div>
+      </div>
+      <div class="mt-6 text-right">
+        <button id="modal-close" class="inline-flex items-center gap-2 px-4 py-2 bg-amber-400 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-amber-300">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
