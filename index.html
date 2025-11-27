@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MABU AGROFARM - Ethical Livestock & Sustainable Farming</title>
+    <!-- Load Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Lucide Icons for aesthetic icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <style>
+        /* Custom Font Import */
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Poppins:wght@300;400;600;700&display=swap');
+        
+        /* Apply Custom Fonts */
+        :root {
+            --font-serif: 'Playfair Display', serif;
+            --font-sans: 'Poppins', sans-serif;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: #f7f7f5; /* Light background */
+            min-height: 100vh;
+        }
+
+        .font-serif {
+            font-family: var(--font-serif);
+        }
+
+        /* Utility for Brand Colors */
+        .text-darkbrown { color: #5B331A; }
+        .bg-darkbrown { background-color: #5B331A; }
+        .text-goldenyellow { color: #FFB347; }
+        .bg-goldenyellow { background-color: #FFB347; }
+        .text-richgold { color: #AF7733; }
+        .bg-richgold { background-color: #AF7733; }
+        .text-darkgreen { color: #385A28; }
+        .bg-darkgreen { background-color: #385A28; }
+
+        /* Custom Styles for Hero/Image Sections */
+        .hero-section {
+            background-image: url('https://placehold.co/1920x800/385A28/FFFFFF?text=MABU+AGROFARM\nSustainable+Agriculture'); 
+            background-size: cover;
+            background-position: center;
+            min-height: 70vh;
+        }
+
+        .cta-button {
+            transition: all 0.3s ease-in-out;
+        }
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .footer-logo-title {
+            line-height: 0.9;
+        }
+
+        /* Gallery Hover Effect */
+        .gallery-item {
+            overflow: hidden;
+        }
+        .gallery-item img {
+            transition: transform 0.5s ease;
+        }
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+    </style>
+
+    <script>
+        // Configure Tailwind with custom colors
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        darkbrown: '#5B331A',
+                        goldenyellow: '#FFB347',
+                        richgold: '#AF7733',
+                        darkgreen: '#385A28',
+                        offwhite: '#FFFFFF',
+                        sage: '#E8F5E9', // Light green background
+                    },
+                }
+            }
+        }
+    </script>
+</head>
+<body class="text-gray-800">
+
+    <!-- Header / Navigation Bar -->
+    <header class="sticky top-0 z-50 shadow-md bg-darkbrown/95 border-b-4 border-darkgreen">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo & Title -->
+                <div class="flex-shrink-0 flex items-center">
+                    <!-- LOGO PLACEHOLDER -->
+                    <img src="https://placehold.co/40x40/FFB347/5B331A?text=L" alt="MABU AGROFARM Logo" class="w-10 h-10 rounded-full mr-3 logo-placeholder">
+                    
+                    <a href="#home" class="text-2xl font-serif font-black text-offwhite tracking-wider">
+                        MABU <span class="text-goldenyellow">AGROFARM</span>
+                    </a>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex space-x-6" aria-label="Main Navigation">
+                    <button onclick="navigate('home')" class="nav-link text-offwhite hover:text-goldenyellow transition duration-300 font-semibold uppercase tracking-wide px-3 py-2 rounded-lg" data-page="home">Home</button>
+                    <button onclick="navigate('about')" class="nav-link text-offwhite hover:text-goldenyellow transition duration-300 font-semibold uppercase tracking-wide px-3 py-2 rounded-lg" data-page="about">About Us</button>
+                    <button onclick="navigate('services')" class="nav-link text-offwhite hover:text-goldenyellow transition duration-300 font-semibold uppercase tracking-wide px-3 py-2 rounded-lg" data-page="services">Services</button>
+                    <button onclick="navigate('gallery')" class="nav-link text-offwhite hover:text-goldenyellow transition duration-300 font-semibold uppercase tracking-wide px-3 py-2 rounded-lg" data-page="gallery">Gallery</button>
+                    <button onclick="navigate('contact')" class="nav-link text-offwhite hover:text-goldenyellow transition duration-300 font-semibold uppercase tracking-wide px-3 py-2 rounded-lg" data-page="contact">Contact Us</button>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-offwhite hover:text-goldenyellow p-2 rounded-md" aria-controls="mobile-menu" aria-expanded="false">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu (Hidden by default) -->
+        <div id="mobile-menu" class="md:hidden hidden bg-darkbrown/95 pb-4">
+            <button onclick="navigate('home'); toggleMobileMenu()" class="block w-full text-left text-offwhite hover:bg-richgold px-4 py-2 text-sm font-medium" data-page="home">Home</button>
+            <button onclick="navigate('about'); toggleMobileMenu()" class="block w-full text-left text-offwhite hover:bg-richgold px-4 py-2 text-sm font-medium" data-page="about">About Us</button>
+            <button onclick="navigate('services'); toggleMobileMenu()" class="block w-full text-left text-offwhite hover:bg-richgold px-4 py-2 text-sm font-medium" data-page="services">Services</button>
+            <button onclick="navigate('gallery'); toggleMobileMenu()" class="block w-full text-left text-offwhite hover:bg-richgold px-4 py-2 text-sm font-medium" data-page="gallery">Gallery</button>
+            <button onclick="navigate('contact'); toggleMobileMenu()" class="block w-full text-left text-offwhite hover:bg-richgold px-4 py-2 text-sm font-medium" data-page="contact">Contact Us</button>
+        </div>
+    </header>
+
+    <!-- Main Content Area (Page Sections) -->
+    <main class="min-h-screen">
+        
+        <!-- --------------------------------- 1. HOME PAGE --------------------------------- -->
+        <section id="home" class="page-section pt-0" data-page="home" role="region" aria-labelledby="home-heading">
+             <h2 id="home-heading" class="sr-only">Home</h2>
+            <!-- Hero Section -->
+            <div class="hero-section flex items-center justify-center text-center relative">
+                <div class="absolute inset-0 bg-darkbrown/50"></div> <!-- Slightly lighter overlay to show more background -->
+                <div class="relative max-w-4xl px-4 py-32 text-offwhite">
+                    <div class="inline-block bg-darkgreen px-4 py-1 mb-4 rounded-full">
+                        <p class="text-sm font-bold uppercase tracking-wider text-offwhite">Sustainably Raised. Locally Loved.</p>
+                    </div>
+                    <h2 class="text-5xl md:text-7xl font-serif font-black mb-6 leading-tight">
+                        MABU AGROFARM
+                    </h2>
+                    <p class="text-lg md:text-xl mb-10 max-w-2xl mx-auto text-offwhite/90">
+                        We supply superior quality cattle, sheep, and goats for breeding and commercial use, built on a foundation of uncompromising animal welfare.
+                    </p>
+                    <button onclick="navigate('services')" class="cta-button bg-goldenyellow text-darkbrown font-bold text-lg py-3 px-8 rounded-full shadow-lg hover:bg-offwhite hover:text-darkbrown uppercase">
+                        Explore Our Services
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Vision & Mission Feature -->
+            <div class="bg-sage py-20 px-4">
+                <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+                    <!-- Vision -->
+                    <div class="p-8 rounded-xl shadow-xl bg-darkbrown text-offwhite border-l-8 border-darkgreen">
+                        <h3 class="text-3xl font-serif font-bold mb-4 text-goldenyellow">Our Vision</h3>
+                        <p class="text-lg">To be the premier and most trusted livestock provider in the region, recognized for the superior health and genetic quality of our animals, our deep commitment to environmental stewardship, and our essential role as a valued foundation for local agricultural growth.</p>
+                    </div>
+                    <!-- Mission -->
+                    <div class="p-8 rounded-xl shadow-xl bg-white text-darkbrown">
+                        <h3 class="text-3xl font-serif font-bold mb-4 text-darkgreen">Our Mission</h3>
+                        <p class="text-lg text-gray-700">To ethically raise and supply superior quality cattle, sheep, and goats for advanced breeding purposes and diverse commercial use. We are committed to upholding uncompromising animal welfare standards and promoting sustainable agriculture.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Objectives CTA (Reverted to Rich Gold background) -->
+            <div class="bg-richgold py-16 text-center text-offwhite">
+                <div class="max-w-4xl mx-auto px-4">
+                    <h3 class="text-4xl font-serif font-black mb-4 text-darkbrown">Focus on Excellence</h3> <!-- Heading changed to Dark Brown for contrast -->
+                    <p class="text-lg mb-8">Learn more about our core objectives: Excellence in Breeding, Sustainable Growth, and Reliable Commercial Service.</p>
+                    <button onclick="navigate('about')" class="cta-button bg-darkgreen text-offwhite font-bold text-base py-3 px-8 rounded-lg shadow-lg hover:bg-darkbrown uppercase">
+                        See Our Objectives <i data-lucide="arrow-right" class="w-5 h-5 inline-block ml-2"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- --------------------------------- 2. ABOUT US PAGE --------------------------------- -->
+        <section id="about" class="page-section pt-10 hidden" data-page="about" role="region" aria-labelledby="about-heading">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <p class="text-darkgreen font-bold uppercase tracking-widest">Our Story & Values</p>
+                    <h2 id="about-heading" class="text-5xl font-serif font-black text-darkbrown mt-2">Who We Are</h2>
+                </div>
+                
+                <!-- About Grid -->
+                <div class="grid md:grid-cols-2 gap-12 items-center mb-20">
+                    <div class="md:order-1">
+                        <img src="https://placehold.co/600x400/385A28/FFFFFF?text=Green+Pastures" alt="A beautiful view of the farm at MABU AGROFARM" class="w-full h-auto rounded-xl shadow-2xl border-b-8 border-goldenyellow">
+                    </div>
+                    <div class="md:order-2">
+                        <h3 class="text-3xl font-serif font-bold mb-4 text-darkbrown">The MABU AGROFARM Philosophy</h3>
+                        <p class="mb-4 text-lg">Mabu Agrofarm is a forward-thinking, family-run agricultural enterprise dedicated to the ethical and sustainable farming of livestock. Specializing in high-quality cattle, sheep, and goats, we serve both the breeding and commercial markets.</p>
+                        <p class="mb-4 text-gray-600">Located primarily in Renostervlei, North West, with a secondary location in Vlakfontein, our farm is founded on a deep commitment to superior animal husbandry, biodiversity, and community service.</p>
+                        <ul class="space-y-2 text-darkgreen font-medium" role="list">
+                            <li role="listitem"><i data-lucide="check-circle" class="w-5 h-5 inline-block mr-2"></i> Ethical Animal Welfare</li>
+                            <li role="listitem"><i data-lucide="check-circle" class="w-5 h-5 inline-block mr-2"></i> Sustainable Land Management</li>
+                            <li role="listitem"><i data-lucide="check-circle" class="w-5 h-5 inline-block mr-2"></i> Dedication and Expertise</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Vision & Mission Feature (DUPLICATED FOR ABOUT PAGE) -->
+                <div class="bg-sage py-16 px-4 mb-20 rounded-xl">
+                    <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+                        <!-- Vision -->
+                        <div class="p-8 rounded-xl shadow-xl bg-darkbrown text-offwhite border-l-8 border-darkgreen">
+                            <h3 class="text-3xl font-serif font-bold mb-4 text-goldenyellow">Our Vision</h3>
+                            <p class="text-lg">To be the premier and most trusted livestock provider in the region, recognized for the superior health and genetic quality of our animals, our deep commitment to environmental stewardship, and our essential role as a valued foundation for local agricultural growth.</p>
+                        </div>
+                        <!-- Mission -->
+                        <div class="p-8 rounded-xl shadow-xl bg-white text-darkbrown">
+                            <h3 class="text-3xl font-serif font-bold mb-4 text-darkgreen">Our Mission</h3>
+                            <p class="text-lg text-gray-700">To ethically raise and supply superior quality cattle, sheep, and goats for advanced breeding purposes and diverse commercial use. We are committed to upholding uncompromising animal welfare standards and promoting sustainable agriculture.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Core Objectives -->
+                <div class="bg-darkbrown p-12 rounded-xl shadow-2xl mb-20">
+                    <h3 class="text-4xl font-serif font-black text-goldenyellow text-center mb-10">Our Core Objectives</h3>
+                    <div class="grid md:grid-cols-3 gap-8">
+                        
+                        <!-- Objective 1 -->
+                        <div class="bg-offwhite p-6 rounded-lg shadow-lg border-t-4 border-darkgreen">
+                            <i data-lucide="award" class="w-10 h-10 text-darkgreen mb-4" aria-hidden="true"></i>
+                            <h4 class="text-xl font-bold text-darkbrown mb-3">Excellence in Breeding</h4>
+                            <p class="text-gray-700">To consistently improve and maintain the genetic quality of our herds utilizing selective breeding programs focused on fertility and disease resistance.</p>
+                        </div>
+
+                        <!-- Objective 2 -->
+                        <div class="bg-offwhite p-6 rounded-lg shadow-lg border-t-4 border-darkgreen">
+                            <i data-lucide="sprout" class="w-10 h-10 text-darkgreen mb-4" aria-hidden="true"></i>
+                            <h4 class="text-xl font-bold text-darkbrown mb-3">Sustainable Growth</h4>
+                            <p class="text-gray-700">To implement environmentally responsible farming methods that promote soil health, conserve water, and ensure long-term sustainability.</p>
+                        </div>
+
+                        <!-- Objective 3 -->
+                        <div class="bg-offwhite p-6 rounded-lg shadow-lg border-t-4 border-darkgreen">
+                            <i data-lucide="truck" class="w-10 h-10 text-darkgreen mb-4" aria-hidden="true"></i>
+                            <h4 class="text-xl font-bold text-darkbrown mb-3">Reliable Commercial Service</h4>
+                            <p class="text-gray-700">To provide a reliable, efficient, and dignified service for the supply of livestock for cultural and commercial events.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- --------------------------------- 3. SERVICES PAGE --------------------------------- -->
+        <section id="services" class="page-section pt-10 hidden" data-page="services" role="region" aria-labelledby="services-heading">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <p class="text-darkgreen font-bold uppercase tracking-widest">Our Offerings</p>
+                    <h2 id="services-heading" class="text-5xl font-serif font-black text-darkbrown mt-2">Quality Livestock & Services</h2>
+                </div>
+                
+                <p class="text-center text-xl max-w-3xl mx-auto mb-16 text-gray-600">
+                    MABU AGROFARM offers two distinct lines of service: supplying premium livestock for breeding programs and providing market-ready animals for diverse commercial and ceremonial needs.
+                </p>
+
+                <!-- Service Block: Breeding Stock -->
+                <div class="bg-white p-8 md:p-16 rounded-xl shadow-2xl border-b-8 border-darkgreen mb-12 grid md:grid-cols-3 gap-10 items-start" role="group" aria-labelledby="breeding-stock-heading">
+                    <div class="md:col-span-1">
+                        <i data-lucide="dna" class="w-12 h-12 text-darkgreen mb-4" aria-hidden="true"></i>
+                        <h3 id="breeding-stock-heading" class="text-3xl font-serif font-bold text-darkbrown mb-4">Breeding Stock Supply</h3>
+                        <p class="text-gray-700 mb-4">We supply high-quality breeding stock to other farmers looking to expand or improve their herds. Our focus is on genetics that ensure health, fertility, and strong commercial traits.</p>
+                        
+                        <!-- BREEDING PICTURE PLACEHOLDER -->
+                        <img src="https://placehold.co/300x200/5B331A/FFFFFF?text=Breeding+Picture" alt="Livestock selected for breeding quality" class="w-full h-auto rounded-lg shadow-md border-2 border-darkgreen">
+                    </div>
+                    <div class="md:col-span-2 space-y-6">
+                        <div class="p-4 bg-sage rounded-lg border-l-4 border-darkgreen">
+                            <h4 class="text-xl font-semibold text-darkbrown">Cattle</h4>
+                            <p>Supply of young bulls and heifers from proven bloodlines, selected for rapid growth and superior maternal traits. We invest heavily in genetic diversity.</p>
+                        </div>
+                        <div class="p-4 bg-sage rounded-lg border-l-4 border-darkgreen">
+                            <h4 class="text-xl font-semibold text-darkbrown">Sheep</h4>
+                            <p>Offering ewes and rams selected for their adaptability, high lambing rate, and excellent meat or wool quality.</p>
+                        </div>
+                        <div class="p-4 bg-sage rounded-lg border-l-4 border-darkgreen">
+                            <h4 class="text-xl font-semibold text-darkbrown">Goats</h4>
+                            <p>Providing bucks and does that are hardy, prolific, and ideal for meat or milk production.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service Block: Commercial & Event Use -->
+                <div class="bg-darkbrown p-8 md:p-16 rounded-xl shadow-2xl text-offwhite grid md:grid-cols-3 gap-10 items-start" role="group" aria-labelledby="commercial-stock-heading">
+                    <div class="md:col-span-1">
+                        <i data-lucide="piggy-bank" class="w-12 h-12 text-goldenyellow mb-4" aria-hidden="true"></i>
+                        <h3 id="commercial-stock-heading" class="text-3xl font-serif font-bold text-offwhite mb-4">Commercial & Event Use</h3>
+                        <p class="text-offwhite/90 mb-4">We understand the cultural significance and logistical needs involved in providing animals for special events. We offer a respectful and efficient service.</p>
+                        
+                        <!-- COMMERCIAL PICTURE PLACEHOLDER -->
+                        <img src="https://placehold.co/300x200/FFB347/5B331A?text=Commercial+Picture" alt="Market-ready livestock for events" class="w-full h-auto rounded-lg shadow-md border-2 border-goldenyellow">
+                    </div>
+                    <div class="md:col-span-2 space-y-6">
+                         <div class="p-4 bg-white/10 rounded-lg border-l-4 border-goldenyellow">
+                            <h4 class="text-xl font-semibold text-goldenyellow">Cultural & Ceremonial Events</h4>
+                            <p>Supplying healthy, market-ready cows, sheep, and goats for weddings, funerals, traditional ceremonies, and community events with dignity and promptness.</p>
+                        </div>
+                        <div class="p-4 bg-white/10 rounded-lg border-l-4 border-goldenyellow">
+                            <h4 class="text-xl font-semibold text-goldenyellow">Custom Selection & Delivery</h4>
+                            <p>Clients can select animals based on specific requirements. We offer flexible and dependable delivery services to ensure the livestock arrives on time.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Customer Reviews Section (NEW) -->
+                <div class="text-center py-20 bg-sage rounded-xl mb-12 mt-12">
+                    <p class="text-richgold font-bold uppercase tracking-widest mb-2">Trust & Quality</p>
+                    <h3 class="text-4xl font-serif font-black text-darkbrown mb-10">What Our Clients Say</h3>
+                    <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto px-4">
+                        <!-- Review 1 -->
+                        <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 border-goldenyellow transform hover:scale-[1.02] transition duration-300">
+                            <i data-lucide="quote" class="w-8 h-8 text-goldenyellow mb-4"></i>
+                            <p class="italic text-gray-700 mb-4">"The breeding stock we received from MABU AGROFARM was exceptional—healthy, vigorous, and exactly as promised. Our herd genetics have improved significantly this season."</p>
+                            <p class="font-bold text-darkbrown">- Mr. V. Nkosi, Farmer</p>
+                        </div>
+                        <!-- Review 2 -->
+                        <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 border-goldenyellow transform hover:scale-[1.02] transition duration-300">
+                            <i data-lucide="quote" class="w-8 h-8 text-goldenyellow mb-4"></i>
+                            <p class="italic text-gray-700 mb-4">"Their service for our community event was seamless and professional. The animals were handled with respect and delivered on time. Highly recommend their commercial service."</p>
+                            <p class="font-bold text-darkbrown">- Siyanda M., Event Organizer</p>
+                        </div>
+                        <!-- Review 3 -->
+                        <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 border-goldenyellow transform hover:scale-[1.02] transition duration-300">
+                            <i data-lucide="quote" class="w-8 h-8 text-goldenyellow mb-4"></i>
+                            <p class="italic text-gray-700 mb-4">"The team's knowledge on animal husbandry is unmatched. They are not just suppliers, but true partners in sustainable agriculture."</p>
+                            <p class="font-bold text-darkbrown">- Dr. L. Pieterse, Vet Consultant</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Gallery Preview CTA (NEW) -->
+                <div class="bg-richgold py-16 text-center text-offwhite rounded-xl shadow-xl mb-12">
+                    <div class="max-w-4xl mx-auto px-4">
+                        <h3 class="text-4xl font-serif font-black mb-4 text-darkbrown">See Our Farm in Action</h3>
+                        <p class="text-lg mb-8">View the ethical environment and high-quality livestock we maintain daily at our Renostervlei and Vlakfontein farms.</p>
+                        <button onclick="navigate('gallery')" class="cta-button bg-darkgreen text-offwhite font-bold text-base py-3 px-8 rounded-lg shadow-lg hover:bg-darkbrown uppercase">
+                            Go to Gallery <i data-lucide="images" class="w-5 h-5 inline-block ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- --------------------------------- 4. GALLERY PAGE (NEW) --------------------------------- -->
+        <section id="gallery" class="page-section pt-10 hidden" data-page="gallery" role="region" aria-labelledby="gallery-heading">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <p class="text-darkgreen font-bold uppercase tracking-widest">Life on the Farm</p>
+                    <h2 id="gallery-heading" class="text-5xl font-serif font-black text-darkbrown mt-2">Our Gallery</h2>
+                    <p class="text-gray-600 mt-4 max-w-2xl mx-auto">A glimpse into our daily operations, our healthy livestock, and the beautiful environment we maintain at Mabu Agrofarm.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+                    <!-- Gallery Item 1 -->
+                    <div class="gallery-item rounded-xl shadow-lg relative group h-64 cursor-pointer">
+                        <img src="https://placehold.co/600x400/5B331A/FFFFFF?text=Cattle+Grazing" alt="Cattle grazing in the field" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-darkgreen/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <p class="text-white font-serif font-bold text-xl">Cattle Grazing</p>
+                        </div>
+                    </div>
+                    <!-- Gallery Item 2 -->
+                    <div class="gallery-item rounded-xl shadow-lg relative group h-64 cursor-pointer">
+                        <img src="https://placehold.co/600x400/385A28/FFFFFF?text=Sheep+Flock" alt="Flock of sheep" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-darkgreen/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <p class="text-white font-serif font-bold text-xl">Healthy Flocks</p>
+                        </div>
+                    </div>
+                    <!-- Gallery Item 3 -->
+                    <div class="gallery-item rounded-xl shadow-lg relative group h-64 cursor-pointer">
+                        <img src="https://placehold.co/600x400/AF7733/FFFFFF?text=Boer+Goats" alt="Boer goats in pen" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-darkgreen/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <p class="text-white font-serif font-bold text-xl">Quality Goats</p>
+                        </div>
+                    </div>
+                    <!-- Gallery Item 4 -->
+                    <div class="gallery-item rounded-xl shadow-lg relative group h-64 cursor-pointer">
+                        <img src="https://placehold.co/600x400/FFB347/5B331A?text=Farm+Team" alt="Farm team working" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-darkgreen/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <p class="text-white font-serif font-bold text-xl">Our Dedicated Team</p>
+                        </div>
+                    </div>
+                    <!-- Gallery Item 5 -->
+                    <div class="gallery-item rounded-xl shadow-lg relative group h-64 cursor-pointer">
+                        <img src="https://placehold.co/600x400/5B331A/FFFFFF?text=Green+Pastures" alt="Green pastures" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-darkgreen/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <p class="text-white font-serif font-bold text-xl">Sustainable Lands</p>
+                        </div>
+                    </div>
+                    <!-- Gallery Item 6 -->
+                    <div class="gallery-item rounded-xl shadow-lg relative group h-64 cursor-pointer">
+                        <img src="https://placehold.co/600x400/385A28/FFFFFF?text=Calves" alt="Newborn calves" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-darkgreen/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <p class="text-white font-serif font-bold text-xl">New Life</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gallery Call to Action -->
+                <div class="bg-sage rounded-xl p-8 text-center border border-darkgreen">
+                    <h3 class="text-2xl font-serif font-bold text-darkbrown mb-2">Want to see our stock in person?</h3>
+                    <p class="text-gray-600 mb-6">We welcome visits by appointment. Come see the quality of our livestock firsthand.</p>
+                    <button onclick="navigate('contact')" class="cta-button bg-darkgreen text-offwhite font-bold py-2 px-6 rounded-lg hover:bg-darkbrown uppercase">
+                        Schedule a Visit
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- --------------------------------- 5. CONTACT US PAGE --------------------------------- -->
+        <section id="contact" class="page-section pt-10 hidden" data-page="contact" role="region" aria-labelledby="contact-heading">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <p class="text-darkgreen font-bold uppercase tracking-widest">Get in Touch</p>
+                    <h2 id="contact-heading" class="text-5xl font-serif font-black text-darkbrown mt-2">Let's Talk Livestock</h2>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-12 bg-white p-8 md:p-16 rounded-xl shadow-2xl border-t-8 border-darkgreen">
+                    <!-- Contact Information -->
+                    <div class="space-y-8">
+                        <h3 class="text-3xl font-serif font-bold text-darkbrown mb-4">Our Details</h3>
+                        
+                        <!-- Primary Address -->
+                        <div class="flex items-start">
+                            <div class="bg-sage p-3 rounded-full mr-4">
+                                <i data-lucide="map-pin" class="w-6 h-6 text-darkgreen" aria-hidden="true"></i>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-lg text-darkbrown">Primary Address (North West):</p>
+                                <p>D1897, Renostervlei, North West</p>
+                            </div>
+                        </div>
+
+                        <!-- Secondary Address -->
+                        <div class="flex items-start">
+                            <div class="bg-sage p-3 rounded-full mr-4">
+                                <i data-lucide="map-pin" class="w-6 h-6 text-darkgreen" aria-hidden="true"></i>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-lg text-darkbrown">Secondary Location (Gauteng):</p>
+                                <p>Vlakfontein, Bronkhorstspruit, Gauteng</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start">
+                             <div class="bg-sage p-3 rounded-full mr-4">
+                                <i data-lucide="mail" class="w-6 h-6 text-darkgreen" aria-hidden="true"></i>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-lg text-darkbrown">Email:</p>
+                                <a href="mailto:info@mabuagrofarm.com" class="hover:text-goldenyellow transition">info@mabuagrofarm.com</a>
+                            </div>
+                        </div>
+
+                        <!-- PHONE NUMBER UPDATED HERE -->
+                        <div class="flex items-start">
+                             <div class="bg-sage p-3 rounded-full mr-4">
+                                <i data-lucide="phone" class="w-6 h-6 text-darkgreen" aria-hidden="true"></i>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-lg text-darkbrown">Phone:</p>
+                                <a href="tel:+27691689748" class="hover:text-goldenyellow transition">+27 69 168 9748</a>
+                            </div>
+                        </div>
+                        
+                         <div class="flex items-start">
+                             <div class="bg-sage p-3 rounded-full mr-4">
+                                <i data-lucide="globe" class="w-6 h-6 text-darkgreen" aria-hidden="true"></i>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-lg text-darkbrown">Website:</p>
+                                <p>www.mabuagrofarm.co.za</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Form -->
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-inner" role="form" aria-labelledby="form-heading">
+                        <h3 id="form-heading" class="text-2xl font-serif font-bold text-darkbrown mb-6">Send Us a Message</h3>
+                        <form onsubmit="event.preventDefault(); showMessageModal('Thank you for your enquiry. We will get back to you soon!', 'success'); this.reset();">
+                            <div class="mb-4">
+                                <label for="name" class="block text-sm font-medium text-darkbrown mb-1">Your Name</label>
+                                <input type="text" id="name" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-darkgreen focus:border-darkgreen transition" aria-label="Your Name">
+                            </div>
+                            <div class="mb-4">
+                                <label for="email" class="block text-sm font-medium text-darkbrown mb-1">Email Address</label>
+                                <input type="email" id="email" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-darkgreen focus:border-darkgreen transition" aria-label="Email Address">
+                            </div>
+                            <div class="mb-4">
+                                <label for="message" class="block text-sm font-medium text-darkbrown mb-1">Message / Enquiry Details</label>
+                                <textarea id="message" rows="4" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-darkgreen focus:border-darkgreen transition" aria-label="Message / Enquiry Details"></textarea>
+                            </div>
+                            <button type="submit" class="cta-button bg-darkgreen text-offwhite font-bold py-3 px-6 rounded-lg w-full hover:bg-darkbrown uppercase">
+                                Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-darkbrown text-offwhite mt-16 pt-12 pb-8 border-t-8 border-darkgreen" role="contentinfo">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8 border-b border-richgold pb-8">
+                
+                <!-- Logo & Mission -->
+                <div>
+                    <!-- LOGO PLACEHOLDER -->
+                    <img src="https://placehold.co/40x40/FFB347/5B331A?text=L" alt="MABU AGROFARM Logo" class="w-10 h-10 rounded-full mb-3 logo-placeholder">
+                    
+                    <h3 class="text-3xl font-serif font-black text-goldenyellow footer-logo-title">MABU</h3>
+                    <h3 class="text-3xl font-serif font-black text-offwhite footer-logo-title">AGROFARM</h3>
+                    <p class="text-sm mt-4 text-offwhite/80">Ethically raising and supplying superior quality cattle, sheep, and goats for advanced breeding and diverse commercial use.</p>
+                </div>
+                
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-xl font-semibold mb-4 border-b-2 border-goldenyellow pb-1">Quick Links</h4>
+                    <ul class="space-y-2 text-offwhite/80" role="list">
+                        <li role="listitem"><button onclick="navigate('home')" class="hover:text-goldenyellow transition">Home</button></li>
+                        <li role="listitem"><button onclick="navigate('about')" class="hover:text-goldenyellow transition">Our Values & Objectives</button></li>
+                        <li role="listitem"><button onclick="navigate('services')" class="hover:text-goldenyellow transition">Service Offerings</button></li>
+                        <li role="listitem"><button onclick="navigate('gallery')" class="hover:text-goldenyellow transition">Gallery</button></li>
+                        <li role="listitem"><button onclick="navigate('contact')" class="hover:text-goldenyellow transition">Contact</button></li>
+                    </ul>
+                </div>
+                
+                <!-- Contact Info -->
+                <div>
+                    <h4 class="text-xl font-semibold mb-4 border-b-2 border-goldenyellow pb-1">Contact Info</h4>
+                    <p class="text-offwhite/80 mb-2">D1897, Renostervlei, North West</p>
+                    <p class="text-offwhite/80 mb-2">P: <a href="tel:+27691689748" class="hover:text-goldenyellow">+27 69 168 9748</a></p>
+                    <p class="text-offwhite/80">E: <a href="mailto:info@mabuagrofarm.com" class="hover:text-goldenyellow">info@mabuagrofarm.com</a></p>
+                </div>
+                
+                <!-- Social Media Placeholder -->
+                <div>
+                    <h4 class="text-xl font-semibold mb-4 border-b-2 border-goldenyellow pb-1">Connect</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-offwhite hover:text-goldenyellow transition" aria-label="Follow us on Facebook"><i data-lucide="facebook" class="w-6 h-6"></i></a>
+                        <a href="#" class="text-offwhite hover:text-goldenyellow transition" aria-label="Follow us on Instagram"><i data-lucide="instagram" class="w-6 h-6"></i></a>
+                        <a href="#" class="text-offwhite hover:text-goldenyellow transition" aria-label="Follow us on LinkedIn"><i data-lucide="linkedin" class="w-6 h-6"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center text-sm text-offwhite/60 pt-6">
+                &copy; <span id="current-year"></span> MABU AGROFARM. All rights reserved.
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Modal for Messages -->
+    <div id="message-modal" class="fixed inset-0 bg-gray-900 bg-opacity-50 z-[100] hidden flex items-center justify-center transition-opacity duration-300" role="dialog" aria-modal="true" aria-labelledby="modal-message">
+        <div class="bg-white p-8 rounded-lg shadow-2xl max-w-sm w-full text-center">
+            <i id="modal-icon" class="w-10 h-10 mx-auto mb-4 text-darkbrown" aria-hidden="true"></i>
+            <p id="modal-message" class="text-lg font-semibold text-gray-800 mb-6"></p>
+            <button onclick="closeMessageModal()" class="bg-darkbrown text-offwhite py-2 px-6 rounded-md hover:bg-richgold transition">Close</button>
+        </div>
+    </div>
+
+    <script>
+        const pages = document.querySelectorAll('.page-section');
+        const navLinks = document.querySelectorAll('.nav-link');
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const messageModal = document.getElementById('message-modal');
+        const modalMessage = document.getElementById('modal-message');
+        const modalIcon = document.getElementById('modal-icon');
+
+        /**
+         * Navigation Logic
+         */
+        function navigate(pageId, updateHistory = true) {
+            // Hide all pages, remove active state
+            pages.forEach(page => page.classList.add('hidden'));
+            navLinks.forEach(link => {
+                link.classList.remove('bg-darkgreen', 'text-offwhite');
+                link.classList.add('text-offwhite');
+                link.removeAttribute('aria-current');
+            });
+
+            // Show the target page
+            const targetPage = document.getElementById(pageId);
+            if (targetPage) {
+                targetPage.classList.remove('hidden');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                
+                // Set active link state (Uses dark green for active state)
+                const activeLink = document.querySelector(`.nav-link[data-page="${pageId}"]`);
+                if (activeLink) {
+                    activeLink.classList.remove('text-offwhite');
+                    activeLink.classList.add('bg-darkgreen', 'text-offwhite');
+                    activeLink.setAttribute('aria-current', 'page');
+                }
+
+                if (updateHistory) {
+                    window.history.pushState(null, '', `#${pageId}`);
+                }
+            } else {
+                navigate('home', updateHistory);
+            }
+        }
+        
+        window.addEventListener('popstate', () => {
+            const pageId = window.location.hash.substring(1) || 'home';
+            navigate(pageId, false);
+        });
+        
+        /**
+         * Mobile Menu Toggle
+         */
+        function toggleMobileMenu() {
+            const isExpanded = mobileMenuBtn.getAttribute('aria-expanded') === 'true' || false;
+            mobileMenuBtn.setAttribute('aria-expanded', !isExpanded);
+            mobileMenu.classList.toggle('hidden');
+        }
+
+        mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+
+        /**
+         * Custom Message Modal
+         */
+        function showMessageModal(message, type = 'info') {
+            modalMessage.textContent = message;
+            modalIcon.innerHTML = '';
+            if (type === 'success') {
+                modalIcon.innerHTML = lucide.createIcons()['check-circle'].toSvg({ class: 'w-10 h-10 mx-auto mb-4 text-darkgreen' });
+            } else {
+                 modalIcon.innerHTML = lucide.createIcons()['info'].toSvg({ class: 'w-10 h-10 mx-auto mb-4 text-goldenyellow' });
+            }
+            messageModal.classList.remove('hidden');
+        }
+
+        function closeMessageModal() {
+            messageModal.classList.add('hidden');
+        }
+
+        /**
+         * Initialization
+         */
+        window.addEventListener('load', () => {
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+            const initialPage = window.location.hash.substring(1) || 'home';
+            navigate(initialPage, false);
+        });
+    </script>
+</body>
+</html>
