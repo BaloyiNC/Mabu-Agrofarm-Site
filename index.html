@@ -7,7 +7,7 @@
     <!-- Load Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Load Lucide Icons for aesthetic icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://unpkg.com/lucide@0.379.0"></script>
     
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -136,11 +136,6 @@
             
             mobileMenu.classList.toggle('hidden');
             button.setAttribute('aria-expanded', !isExpanded);
-        }
-        
-        // Function to initialize Lucide icons
-        window.onload = function() {
-            lucide.createIcons();
         };
 
     </script>
@@ -281,8 +276,8 @@
                     </div>
                     <div class="md:order-2">
                         <h3 class="text-3xl font-serif font-bold mb-4 text-darkbrown">The MABU AGROFARM Philosophy</h3>
-                        <p class="mb-4 text-lg">Mabu Agrofarm is a forward-thinking, family-run agricultural enterprise dedicated to the ethical and sustainable farming of livestock. Specializing in high-quality cattle, sheep, and goats, we serve both the breeding and commercial markets.</p>
-                        <p class="mb-4 text-gray-600">Located primarily in Renostervlei, Limpopo, with a secondary location in Vlakfontein, our farm is founded on a deep commitment to superior animal husbandry, biodiversity, and community service.</p>
+                        <p class="mb-4 text-lg">Mabu Agrofarm is a black-owned, forward-thinking, family-run agricultural enterprise dedicated to the ethical and sustainable farming of livestock. Specializing in high-quality bonsmara cattle, sheep, and boer goats, we serve both the breeding and commercial markets.</p>
+                        <p class="mb-4 text-gray-600">Located primarily in Renostervlei (Radium), Limpopo, with a secondary location in Vlakfontein (Bronkorspruit), our farm is founded on a deep commitment to superior animal husbandry, biodiversity, and community service. Mabu Agrofarm is also a registered affiliate of The South African Bonsmara Group.</p>
                         <ul class="space-y-2 text-darkgreen font-medium" role="list">
                             <li role="listitem"><i data-lucide="check-circle" class="w-5 h-5 inline-block mr-2"></i> Ethical Animal Welfare</li>
                             <li role="listitem"><i data-lucide="check-circle" class="w-5 h-5 inline-block mr-2"></i> Sustainable Land Management</li>
@@ -407,6 +402,10 @@
                         <div class="p-4 bg-white/10 rounded-lg border-l-4 border-goldenyellow">
                             <h4 class="text-xl font-semibold text-goldenyellow">Custom Selection & Delivery</h4>
                             <p>Clients can select animals based on specific requirements. We offer flexible and dependable delivery services to ensure the livestock arrives on time.</p>
+                        </div>
+                        <div class="p-4 bg-white/10 rounded-lg border-l-4 border-goldenyellow">
+                            <h4 class="text-xl font-semibold text-goldenyellow">Feedlot & Livestock Procurement</h4>
+                            <p>We offer custom feedlot services, caring for livestock to optimal market weight. Additionally, we purchase calves directly from farms nationwide, offering competitive prices and hassle-free transactions.</p>
                         </div>
                     </div>
                 </div>
@@ -620,7 +619,7 @@
                             </div>
                             <div>
                                 <h4 class="font-bold text-darkbrown text-lg">Primary Farm Location</h4>
-                                <p class="text-gray-700">D1897, Renostervlei, Limpopo</p>
+                                <p class="text-gray-700">D1897, Renostervlei, <br> Radium, Limpopo</p>
                             </div>
                         </div>
 
@@ -665,7 +664,7 @@
                             </div>
                             <div>
                                 <h4 class="font-bold text-darkbrown text-lg">Operating Hours</h4>
-                                <p class="text-gray-700">Mon - Fri: 8:00 AM - 4:00 PM (Visits by Appointment)</p>
+                                <p class="text-gray-700">Mon - Fri: 8:00 AM - 5:00 PM (Visits by Appointment)</p>
                             </div>
                         </div>
                     </div>
@@ -779,10 +778,38 @@
                         <i data-lucide="phone" class="w-4 h-4 mr-3"></i> +27 81 493 4045
                     </p>
                     <p class="flex items-center text-offwhite/80">
-                        <i data-lucide="map-pin" class="w-4 h-4 mr-3"></i> Limpopo Province, SA
+                        <i data-lucide="map-pin" class="w-4 h-4 mr-3"></i> Limpopo & Gauteng Province
                     </p>
                 </div>
             </div>
+        <!-- Social Media Buttons -->
+                <div class="flex justify-center space-x-6 mt-8 w-full">
+                
+                <!-- Instagram -->
+                <a href="https://www.instagram.com/mabu_agrofarm/" target="_blank" rel="noopener noreferrer" 
+                class="social-icon p-3 rounded-full bg-pink-50 text-pink-600 hover:bg-pink-100"
+                aria-label="Instagram">
+                    <i data-lucide="instagram" class="w-6 h-6"></i>
+                </a>
+                
+                <!-- TikTok -->
+                <a href="https://www.tiktok.com/@mabu_agrofarm" target="_blank" rel="noopener noreferrer" 
+                class="social-icon p-3 rounded-full bg-gray-100 text-black hover:bg-gray-200"
+                aria-label="TikTok">
+                    <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
+                        <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.17-2.89-.6-4.09-1.47-.88-.64-1.61-1.47-2.12-2.44v7.37c.2 5.87-6.2 9.49-10.75 6.24-4.22-3.23-2.85-9.84 2.37-10.99.23-.05.46-.09.7-.12V12.91c-.13.01-.26.03-.38.05-3.04.46-4.27 4.13-2.67 6.45 1.54 2.53 5.4 2.1 6.36-.67.09-.26.13-.53.13-.8V0l.17.02z"/>
+                    </svg>
+                </a>
+
+                <!-- Facebook -->
+                <a href="https://www.facebook.com/profile.php?id=61577818941244" target="_blank" rel="noopener noreferrer" 
+                class="social-icon p-3 rounded-full bg-blue-50 text-blue-600 hover:bg-blue-100"
+                aria-label="Facebook">
+                    <i data-lucide="facebook" class="w-6 h-6"></i>
+                </a>
+
+            </div>
+                <br>
 
             <!-- Copyright -->
             <div class="text-center text-sm text-offwhite/60">
@@ -790,10 +817,15 @@
             </div>
         </div>
     </footer>
-    
+
     <script>
         // Set the current year dynamically in the footer
         document.getElementById('current-year').textContent = new Date().getFullYear();
     </script>
+
+    <script>
+        lucide.createIcons();
+    </script>
+
 </body>
 </html>
